@@ -26,3 +26,6 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
+backend:
+  name: "git-gateway"
+  branch: "main"
