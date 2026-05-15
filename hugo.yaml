@@ -1,4 +1,62 @@
 baseURL: https://example.org/
 languageCode: en-us
-title: My New Hugo Site
-theme: ["PaperMod"]
+title: Salman's Blog
+theme: PaperMod
+paginate: 5
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+params:
+  title: Salman's Blog
+  description: Thoughts on software engineering, systems, and building products.
+  keywords: [Software, Engineering, Systems, Architecture, CS, SWE, Algorithms, Projects, Blog, Portfolio]
+  author: Salman Siddiqui
+
+  DateFormat: January 2, 2006
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: false
+  ShowWordCount: false
+  ShowRssButtonInSectionTermList: false
+  UseHugoToc: true
+  disableSpecial1stPost: true
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: true
+  showtoc: false
+  tocopen: false
+
+  profileMode:
+    enabled: true
+    title: Salman Siddiqui
+    subtitle: Senior Software Engineer | Systems Architect
+    imageUrl: /images/profile.jpg
+    buttons:
+      - name: GitHub
+        url: https://github.com/salmanfs815
+      - name: LinkedIn
+        url: https://www.linkedin.com/in/salman-s/
+
+menu:
+  main:
+    - identifier: About
+      name: About
+      url: /about/
+      weight: 10
+    - identifier: Posts
+      name: Posts
+      url: /posts/
+      weight: 20
+    - identifier: Projects
+      name: Projects
+      url: /tags/projects/
+      weight: 30
