@@ -1,0 +1,28 @@
+media_folder: "static/images"
+public_folder: "/images"
+site_url: "https://salmanfs.ca"
+search: false
+slug:
+  encoding: "ascii"
+  clean_accents: true
+collections:
+  - label: "Posts"
+    name: "posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "/posts/{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "About"
+        name: "about"
+        file: "/content/about.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
