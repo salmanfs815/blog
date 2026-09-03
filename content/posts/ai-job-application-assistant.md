@@ -1,5 +1,5 @@
 ---
-title: "Building an AI Job Application Assistant with FastAPI and React"
+title: "AI Job Application Assistant"
 date: 2026-07-20
 tags:
   - projects

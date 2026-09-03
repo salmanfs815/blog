@@ -1,5 +1,5 @@
 ---
-title: "Building a Fundraising Website for the New West Masjid Project"
+title: "New West Masjid Website"
 date: 2026-09-01
 tags:
   - projects

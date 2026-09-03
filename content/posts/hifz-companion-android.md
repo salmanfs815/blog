@@ -1,5 +1,5 @@
 ---
-title: "Building Hifz Companion: An Offline-First Revision Scheduler for Android"
+title: "Hifz Companion: An Offline-First Revision Scheduler for Android"
 date: 2026-08-04
 tags:
   - projects
