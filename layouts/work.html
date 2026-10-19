@@ -1,0 +1,123 @@
+{{- define "main" }}
+
+<article class="post-single work">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Params.headline | default .Title }}</h1>
+    {{- with .Params.subheadline }}
+    <div class="post-description">{{ . }}</div>
+    {{- end }}
+  </header>
+
+  <div class="post-content md-content">
+    {{ .Content }}
+    {{- with .Params.cta }}
+    <p class="work-cta">
+      <a class="button" href="#contact">{{ .text }}</a>
+      {{- with .note }}<span class="work-cta-note">{{ . }}</span>{{ end }}
+    </p>
+    {{- end }}
+
+    {{- with .Params.services }}
+    <h2 id="help">What I can help with</h2>
+    <ul class="work-services">
+      {{- range . }}
+      <li>
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+      </li>
+      {{- end }}
+    </ul>
+    {{- end }}
+    {{- with .Params.servicesNote }}
+    <p class="work-note">{{ . }}</p>
+    {{- end }}
+
+    {{- with .Params.steps }}
+    <h2 id="how-it-works">How it works</h2>
+    <ol class="work-steps">
+      {{- range . }}
+      <li>{{ . | markdownify }}</li>
+      {{- end }}
+    </ol>
+    {{- end }}
+
+    {{- with .Params.projects }}
+    <h2 id="projects">Recent projects</h2>
+    {{- range $p := . }}
+    <section class="work-project">
+      {{- with $.Resources.Get $p.image }}
+      {{- $img := .Resize "960x webp q75" }}
+      <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}"
+        alt="Screenshot: {{ $p.title }}" loading="lazy" decoding="async">
+      {{- else }}
+      {{- warnf "work: screenshot %q not found for %q" $p.image $p.title }}
+      <div class="work-placeholder">Screenshot coming soon</div>
+      {{- end }}
+      <h3>{{ $p.title }}</h3>
+      <p class="work-outcome">{{ $p.outcome }}</p>
+      <p class="work-summary">{{ $p.summary }}</p>
+      {{- with $p.url }}
+      <p><a class="work-link" href="{{ . }}" target="_blank" rel="noopener">{{ (urls.Parse .).Host }}</a></p>
+      {{- end }}
+    </section>
+    {{- end }}
+    {{- end }}
+
+    <h2 id="contact">Let's talk</h2>
+    <p>
+      Tell me a little about what you'd like to do. Email
+      <a href="mailto:{{ site.Params.contactEmail }}">{{ site.Params.contactEmail }}</a>
+      or use the form below. I usually reply within a day.
+    </p>
+
+    {{- $formID := site.Params.formspreeFormID }}
+    {{- if not $formID }}
+    {{- warnf "work: params.formspreeFormID is not set; the contact form will not submit" }}
+    {{- end }}
+    <form class="work-form" action="https://formspree.io/f/{{ $formID | default "YOUR_FORM_ID" }}" method="POST">
+      <label for="cf-name">Name</label>
+      <input id="cf-name" type="text" name="name" autocomplete="name" required>
+
+      <label for="cf-email">Email</label>
+      <input id="cf-email" type="email" name="email" autocomplete="email" required>
+
+      <label for="cf-message">Message</label>
+      <textarea id="cf-message" name="message" rows="6" required></textarea>
+
+      <input type="hidden" name="_subject" value="New enquiry from the Hire Me page">
+      <input type="text" name="_gotcha" class="work-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <button type="submit" class="button">Send message</button>
+      <p class="work-form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</article>
+
+<script>
+  (function () {
+    var form = document.querySelector('.work-form');
+    if (!form || !window.fetch) return;
+    var status = form.querySelector('.work-form-status');
+    var button = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      button.disabled = true;
+      status.textContent = 'Sending…';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      }).then(function (res) {
+        if (!res.ok) throw new Error(res.status);
+        form.reset();
+        status.textContent = "Thanks! Your message has been sent and I'll be in touch soon.";
+      }).catch(function () {
+        status.textContent = 'Sorry, something went wrong. Please email me directly at {{ site.Params.contactEmail }}.';
+      }).finally(function () {
+        button.disabled = false;
+      });
+    });
+  })();
+</script>
+
+{{- end }}{{/* end main */}}

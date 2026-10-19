@@ -1,0 +1,5 @@
+{{- /* Umami Cloud analytics: cookieless, production builds only, and only when a website ID is configured. */ -}}
+{{- if and hugo.IsProduction site.Params.umamiWebsiteID }}
+<script defer src="https://cloud.umami.is/script.js" data-website-id="{{ site.Params.umamiWebsiteID }}"
+  {{- with site.Params.umamiDomains }} data-domains="{{ . }}"{{ end }}></script>
+{{- end }}

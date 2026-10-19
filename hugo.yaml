@@ -15,6 +15,15 @@ params:
   keywords: [Software, Engineering, Systems, Architecture, CS, SWE, Algorithms, Projects, Blog, Portfolio]
   author: Salman Siddiqui
 
+  # Contact details for the /work page
+  contactEmail: hello@salmanfs.ca
+  # Formspree form ID (the part after https://formspree.io/f/). Leave empty until created.
+  formspreeFormID: "mwlvzybo"
+
+  # Umami Cloud analytics. Script only loads in production builds (see layouts/_partials/extend_head.html).
+  umamiWebsiteID: "db9eb467-d59a-4f34-92d6-edf21d315c81"
+  umamiDomains: salmanfs.ca
+
   DateFormat: January 2, 2006
   defaultTheme: auto # dark, light
   disableThemeToggle: false
@@ -41,6 +50,8 @@ params:
     subtitle: Senior Software Engineer | Systems Architect
     imageUrl: /images/profile.jpg
     buttons:
+      - name: Hire Me
+        url: /work/
       - name: GitHub
         url: https://github.com/salmanfs815
       - name: LinkedIn
@@ -60,3 +71,7 @@ menu:
       name: Projects
       url: /tags/projects/
       weight: 30
+    - identifier: Work
+      name: Hire Me
+      url: /work/
+      weight: 40

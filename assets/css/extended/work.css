@@ -1,0 +1,203 @@
+/* Client-facing /work page. Uses PaperMod theme variables so it follows light/dark mode. */
+
+.work .post-title {
+    line-height: 1.25;
+}
+
+.work .post-description {
+    color: var(--secondary);
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+    .work .post-title {
+        font-size: 30px;
+    }
+}
+
+.work .work-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+}
+
+.work .work-cta-note,
+.work .work-note {
+    color: var(--secondary);
+}
+
+.work .md-content a.button {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--theme);
+    background: var(--primary);
+    border-radius: var(--radius);
+    padding: 0.5rem 1.1rem;
+    font-weight: 500;
+}
+
+.work .md-content a.button:hover {
+    opacity: 0.85;
+}
+
+.work .work-services {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.work .work-services li {
+    margin: 0;
+    padding: 1rem 1.2rem;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.work .work-services h3 {
+    margin: 0 0 0.4rem;
+    font-size: 18px;
+}
+
+.work .work-services p {
+    color: var(--secondary);
+    margin: 0;
+}
+
+.work .work-steps {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+}
+
+.work .work-steps li {
+    counter-increment: step;
+    position: relative;
+    padding-inline-start: 2.75rem;
+    margin-top: 1rem;
+    min-height: 2rem;
+}
+
+.work .work-steps li::before {
+    content: counter(step);
+    position: absolute;
+    inset-inline-start: 0;
+    top: -0.1rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--tertiary);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.work .work-project {
+    margin-bottom: 2rem;
+}
+
+/* Divider between projects */
+.work .work-project + .work-project {
+    border-top: 1px solid var(--tertiary);
+    padding-top: 2rem;
+}
+
+.work .work-project img,
+.work .work-placeholder {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.work .work-placeholder {
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--code-bg);
+    color: var(--secondary);
+}
+
+.work .work-project h3 {
+    margin: 1rem 0 0.2rem;
+    font-size: 22px;
+}
+
+.work .work-project .work-outcome {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.work .work-project .work-summary {
+    color: var(--secondary);
+}
+
+.work .work-project .work-link {
+    overflow-wrap: anywhere;
+}
+
+.work .work-project p {
+    margin-bottom: 0.6rem;
+}
+
+.work .work-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    max-width: 520px;
+}
+
+.work .work-form label {
+    font-weight: 500;
+    margin-top: 0.6rem;
+}
+
+.work .work-form input,
+.work .work-form textarea {
+    font: inherit;
+    color: var(--primary);
+    background: var(--entry);
+    border: 1px solid var(--tertiary);
+    border-radius: var(--radius);
+    padding: 0.55rem 0.7rem;
+}
+
+.work .work-form input:focus,
+.work .work-form textarea:focus {
+    outline: 2px solid var(--secondary);
+    outline-offset: 1px;
+}
+
+.work .work-form .work-hp {
+    position: absolute;
+    left: -9999px;
+}
+
+.work .work-form button {
+    align-self: flex-start;
+    margin-top: 1rem;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--theme);
+    background: var(--primary);
+    border-radius: var(--radius);
+    padding: 0.5rem 1.1rem;
+}
+
+.work .work-form button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.work .work-form-status {
+    color: var(--secondary);
+    min-height: 1.5em;
+}

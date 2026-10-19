@@ -11,3 +11,9 @@ command = """\
   git config core.quotepath false && \
   hugo build --gc --minify --baseURL "${URL}"
   """
+
+# Business card QR code. 302 (temporary) so the destination can change later without browsers caching it.
+[[redirects]]
+from = "/card"
+to = "/work/?utm_source=business_card&utm_medium=qr&utm_campaign=card_v1"
+status = 302
