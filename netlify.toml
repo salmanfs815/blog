@@ -17,3 +17,14 @@ command = """\
 from = "/card"
 to = "/work/?utm_source=business_card&utm_medium=qr&utm_campaign=card_v1"
 status = 302
+
+# HifzCompanion app. Netlify path matching is case-sensitive, so cover both common spellings.
+[[redirects]]
+from = "/hifzcompanion"
+to = "https://salmanfs815.github.io/HifzCompanion/"
+status = 302
+
+[[redirects]]
+from = "/HifzCompanion"
+to = "https://salmanfs815.github.io/HifzCompanion/"
+status = 302
